@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ScienceAndCiao.Models.Member>
+
+@*
+    An interface implemented by the list class.
+    In this view we only want to iterate over this list. Can replace with a different data structure later -  as long as it is still enumerable, the view code
+    can remain the same.
+*@
+
+
+@{
+    ViewBag.Title = "Members";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Members</h2>
+@if (!Model.Any())
+{
+    <p>No members can currently be displayed.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Member</th>
+                <th>Discount Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(member.Name, "Details", "Members", new { id = member.Id }, null)</td>
+                    <td>@member.MembershipType.DiscountRate%</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

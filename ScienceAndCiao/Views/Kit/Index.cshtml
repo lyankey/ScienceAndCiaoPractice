@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ScienceAndCiao.Models.Kit>
+@{
+    ViewBag.Title = "Kits";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kits</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Kit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kit in Model)
+        {
+            <tr>
+                <td>@kit.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,8 +1,30 @@
-﻿@model ScienceAndCiao.Models.Kit
+﻿@model ScienceAndCiao.ViewModels.RandomKitViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
+@*
+  commenting, something here needs checking  
+*@
+
+@{ 
+    var className = Model.Members.Count > 0 ? "popular" : null;
+}
+
+<h2 class="@className">@Model.Kit.Name</h2>
+
+@if (Model.Members.Count == 0)
+{
+    <p>No one has rented this kit before.</p>
+}
+else
+{
+<ul>
+    @foreach (var member in Model.Members)
+    {
+        <li>@member.Name</li>
+    }
+</ul>
+}
 

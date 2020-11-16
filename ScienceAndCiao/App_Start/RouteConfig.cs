@@ -13,13 +13,16 @@ namespace ScienceAndCiao
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "KitsByReleaseDate",
-                "kit/released/{year}/{month}",
-                new { controller = "Kit", action = "ByReleaseDate" },
-                //must be 4 digits year and 2 digits month
-                new { year = @"\d{4}", month = @"\d{2}"});
-            //new { year = @"2019|2020", month = @"\d{2}"});
+            routes.MapMvcAttributeRoutes();
+
+            ////older convention way to do custom routes - the newer is attribute routing
+            //routes.MapRoute(
+            //    "KitsByReleaseDate",
+            //    "kit/released/{year}/{month}",
+            //    new { controller = "Kit", action = "ByReleaseDate" },
+            //    //must be 4 digits year and 2 digits month
+            //    new { year = @"\d{4}", month = @"\d{2}"});
+            ////new { year = @"2019|2020", month = @"\d{2}"});
 
             routes.MapRoute(
                 name: "Default",
