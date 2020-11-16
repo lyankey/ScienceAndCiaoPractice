@@ -30,7 +30,7 @@ namespace ScienceAndCiao.Controllers
 
         public ActionResult Details(int id)
         {
-            var member = _context.Members.SingleOrDefault(c => c.Id == id);
+            var member = _context.Members.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             if (member == null)
                 return HttpNotFound();

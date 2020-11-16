@@ -183,6 +183,30 @@
     <Compile Include="Migrations\202011160112027_PopulateDatabase.Designer.cs">
       <DependentUpon>202011160112027_PopulateDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011160312436_AddNameToMembershipType.cs" />
+    <Compile Include="Migrations\202011160312436_AddNameToMembershipType.Designer.cs">
+      <DependentUpon>202011160312436_AddNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011160315174_SetNameOfMembershipTypes.cs" />
+    <Compile Include="Migrations\202011160315174_SetNameOfMembershipTypes.Designer.cs">
+      <DependentUpon>202011160315174_SetNameOfMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011160321237_AddedMemberNames.cs" />
+    <Compile Include="Migrations\202011160321237_AddedMemberNames.Designer.cs">
+      <DependentUpon>202011160321237_AddedMemberNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011160334495_FK.cs" />
+    <Compile Include="Migrations\202011160334495_FK.Designer.cs">
+      <DependentUpon>202011160334495_FK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011160338406_AddBirthdateToMember.cs" />
+    <Compile Include="Migrations\202011160338406_AddBirthdateToMember.Designer.cs">
+      <DependentUpon>202011160338406_AddBirthdateToMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011160343348_AddedDOBtoMember.cs" />
+    <Compile Include="Migrations\202011160343348_AddedDOBtoMember.Designer.cs">
+      <DependentUpon>202011160343348_AddedDOBtoMember.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -279,6 +303,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011160112027_PopulateDatabase.resx">
       <DependentUpon>202011160112027_PopulateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011160312436_AddNameToMembershipType.resx">
+      <DependentUpon>202011160312436_AddNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011160315174_SetNameOfMembershipTypes.resx">
+      <DependentUpon>202011160315174_SetNameOfMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011160321237_AddedMemberNames.resx">
+      <DependentUpon>202011160321237_AddedMemberNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011160334495_FK.resx">
+      <DependentUpon>202011160334495_FK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011160338406_AddBirthdateToMember.resx">
+      <DependentUpon>202011160338406_AddBirthdateToMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011160343348_AddedDOBtoMember.resx">
+      <DependentUpon>202011160343348_AddedDOBtoMember.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
