@@ -7,13 +7,13 @@ namespace ScienceAndCiao.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Stuck : IMigrationMetadata
+    public sealed partial class TryingToFixFK : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Stuck));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TryingToFixFK));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011160102246_Stuck"; }
+            get { return "202011161604182_TryingToFixFK"; }
         }
         
         string IMigrationMetadata.Source

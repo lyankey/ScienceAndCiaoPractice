@@ -30,7 +30,7 @@ else
             @foreach (var member in Model)
             {
             <tr>
-                <td>@Html.ActionLink(member.Name, "Details", "Members", new { id = member.Id }, null)</td>
+                <td>@Html.ActionLink(member.Name, "Edit", "Members", new { id = member.Id }, null)</td>
                 <td>@member.MembershipType.MembershipName</td>
             </tr>
             }

@@ -5,31 +5,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace ScienceAndCiao.Controllers
 {
     public class KitController : Controller
     {
+        public ApplicationDbContext _context;
+        public KitController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose (bool disposing)
+        {
+            _context.Dispose();
+        }
         public ViewResult Index()
         {
-            var kits = GetKits();
+            var kits = _context.Kits.Include(m => m.Branch).ToList();
 
             return View(kits);
         }
 
-        private IEnumerable<Kit> GetKits()
+        public ActionResult Details(int id)
         {
-            return new List<Kit>
-            {
-                new Kit { Id = 1, Name = "Cakes" },
-                new Kit { Id = 2, Name = "Eggs" }
-            };
+            var kit = _context.Kits.Include(m => m.Branch).SingleOrDefault(m => m.Id == id);
+            if (kit == null)
+                return HttpNotFound();
+
+            return View(kit);
         }
 
+            // GET: Kit/Random
 
-        // GET: Kit/Random
-
-        public ActionResult Random()
+            public ActionResult Random()
         {
             var kit = new Kit() { Name = "First Kit" };
             //var viewResult = new ViewResult();

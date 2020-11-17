@@ -22,6 +22,8 @@ namespace ScienceAndCiao.Models
     {
         public DbSet<Member> Members { get; set; }
         public DbSet<Kit> Kits { get; set; }
+        public DbSet<Branch> Branches { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

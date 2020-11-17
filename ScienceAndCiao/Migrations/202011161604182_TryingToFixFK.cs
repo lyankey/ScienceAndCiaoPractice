@@ -3,18 +3,37 @@ namespace ScienceAndCiao.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Stuck : DbMigration
+    public partial class TryingToFixFK : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Branches",
+                c => new
+                    {
+                        Id = c.Byte(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 255),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Kits",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(nullable: false, maxLength: 255),
+                        Description = c.String(),
+                        Ingredients = c.String(),
+                        ImageUrl = c.String(),
+                        AvailableQuantity = c.Int(nullable: false),
+                        Price = c.Double(nullable: false),
+                        DateAdded = c.DateTime(nullable: false),
+                        LengthMinutes = c.Int(nullable: false),
+                        BranchId = c.Byte(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Branches", t => t.BranchId, cascadeDelete: true)
+                .Index(t => t.BranchId);
             
             CreateTable(
                 "dbo.Members",
@@ -24,6 +43,7 @@ namespace ScienceAndCiao.Migrations
                         Name = c.String(nullable: false, maxLength: 100),
                         IsSubscribedToEmails = c.Boolean(nullable: false),
                         MembershipTypeId = c.Byte(nullable: false),
+                        Birthdate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.MembershipTypes", t => t.MembershipTypeId, cascadeDelete: true)
@@ -34,6 +54,7 @@ namespace ScienceAndCiao.Migrations
                 c => new
                     {
                         Id = c.Byte(nullable: false),
+                        MembershipName = c.String(),
                         SignUpFee = c.Int(nullable: false),
                         SubscriptionDuration = c.Byte(nullable: false),
                         DiscountRate = c.Byte(nullable: false),
@@ -117,6 +138,7 @@ namespace ScienceAndCiao.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Members", "MembershipTypeId", "dbo.MembershipTypes");
+            DropForeignKey("dbo.Kits", "BranchId", "dbo.Branches");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -124,6 +146,7 @@ namespace ScienceAndCiao.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Members", new[] { "MembershipTypeId" });
+            DropIndex("dbo.Kits", new[] { "BranchId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -132,6 +155,7 @@ namespace ScienceAndCiao.Migrations
             DropTable("dbo.MembershipTypes");
             DropTable("dbo.Members");
             DropTable("dbo.Kits");
+            DropTable("dbo.Branches");
         }
     }
 }
